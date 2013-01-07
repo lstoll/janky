@@ -104,6 +104,8 @@ module Janky
           http.use_ssl = true
         end
 
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
         post = Net::HTTP::Post.new("#{path}/createItem?name=#{name}")
         post.basic_auth(user, pass) if user && pass
         post["Content-Type"] = "application/xml"
