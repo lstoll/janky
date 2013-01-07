@@ -77,6 +77,8 @@ module Janky
           http.use_ssl = true
         end
 
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
         get = Net::HTTP::Get.new("#{path}/job/#{name}/")
         get.basic_auth(user, pass) if user && pass
         response = http.request(get)
